@@ -1,0 +1,15 @@
+library ieee;
+USE ieee.std_logic_1164.all ;
+
+ENTITY abext IS
+PORT(
+  a, b, x, y, z : in std_logic;
+  sa, sb    : out std_logic
+);
+END abext;
+
+ARCHITECTURE main of abext is
+BEGIN
+	sa <= (a AND b AND NOT x) OR (a AND NOT x AND NOT y) OR (a AND NOT x AND NOT z) OR (a AND NOT y AND NOT z) OR (NOT a AND b AND x AND NOT y) OR (NOT a AND x AND NOT y AND z);
+	sb <= (b AND NOT x AND NOT y AND z) OR (NOT b AND NOT x AND y AND NOT z);
+END main;
